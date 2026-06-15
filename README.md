@@ -19,10 +19,12 @@ Standard data-driven neural networks lack baseline physical logic and output phy
 $$\mathcal{L}_{\text{total}} = \mathcal{L}_{\text{data}} + \lambda \mathcal{L}_{\text{physics}}$$
 
 1. **Empirical Objective ($\mathcal{L}_{\text{data}}$):** Maps the standard Mean Squared Error across points where physical data configurations exist:
-   $$\mathcal{L}_{\text{data}} = \frac{1}{N_d}\sum_{i=1}^{N_d} |T_{\text{pred}}(x_i) - T_{\text{actual}}(x_i)|^2$$
+
+$$\mathcal{L}_{\text{data}} = \frac{1}{N_d} \sum_{i=1}^{N_d} |T_{\text{pred}}(x_i) - T_{\text{actual}}(x_i)|^2$$
 
 2. **Physical Objective ($\mathcal{L}_{\text{physics}}$):** Evaluated across an interior matrix of unlabelled collocation parameters. It utilizes automatic differentiation (**Autograd**) to compute and penalize the structural residual of a steady-state 1D heat equation equipped with a non-linear internal generation source term:
-   $$\frac{d^2T}{dx^2} + \pi^2 \sin(\pi x) = 0$$
+
+$$\frac{d^2T}{dx^2} + \pi^2 \sin(\pi x) = 0$$
 
 ---
 
